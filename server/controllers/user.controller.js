@@ -7,7 +7,7 @@ const signup = async (req, res) => {
     try {
         if (email && username && password) {
             const emailCheck = await Model.emailCheck(email)
-            const userNameCheck = await Model.emailCheck(username)
+            const userNameCheck = await Model.userNameCheck(username)
             if (emailCheck.length > 0) {
                 return res.status(400).json({ message: "exists email" })
             } else if (userNameCheck.length > 0) {

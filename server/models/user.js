@@ -45,6 +45,7 @@ const emailCheck = async (data) => {
 const userNameCheck = async (data) => {
     try {
         const findUsername = await db.query(`SELECT * FROM user WHERE username =?;`, [data])
+        console.log(findUsername)
         return findUsername[0]
     } catch (err) {
         return err
