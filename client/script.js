@@ -112,7 +112,7 @@ const data = async () => {
                 emailTag.innerText = `이메일 : ${user.data.email}`
                 usernameTag.innerText = `별명 : ${user.data.username}`
                 mobileTag.innerText = `전화번호 : ${user.data.mobile}`
-                genderTag.innerText = `성별 : ${user.data === 0 ? `남자` : `여자`}`
+                genderTag.innerText = `성별 : ${user.data.gender === 0 ? `남자` : `여자`}`
             }
             logon.forEach((el) => el.style.display = 'none')
             getout.forEach((el) => el.style.display = 'block')
