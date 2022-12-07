@@ -1,9 +1,9 @@
-const Model = require('../models/user');
-const { sign, verify } = require('jsonwebtoken');
+const Model = require("../models/user")
+const { sign, verify } = require("jsonwebtoken")
 
 //회원가입
 const signup = async (req, res) => {
-    const { email, username, password, passwordConfirm } = req.body;
+    const { email, username, password, passwordConfirm } = req.body
     try {
         if (email && username && password) {
             const emailCheck = await Model.emailCheck(email)
@@ -22,7 +22,7 @@ const signup = async (req, res) => {
             return res.status(400).json({ message: "fill in the fields" })
         }
     } catch (err) {
-        return res.status(400).json({ message: 'Bad Request' })
+        return res.status(400).json({ message: "Bad Request" })
     }
 }
 
@@ -39,17 +39,16 @@ const login = async (req, res) => {
                     email,
                     username,
                     mobile,
-                    gender
+                    gender,
                 }
-                const token = sign(payload, process.env.JWT_SECRET, { expiresIn: '10m' })
+                const token = sign(payload, process.env.JWT_SECRET, { expiresIn: "10m" })
                 return res.status(200).json({ message: "login User", data: token })
             } else {
                 return res.status(400).json({ message: "ID dose not exist" })
             }
         }
     } catch (err) {
-        return res.status(400).json({ message: 'Bad Request' })
-
+        return res.status(400).json({ message: "Bad Request" })
     }
 }
 
@@ -59,7 +58,7 @@ const allUser = async (req, res) => {
         const result = await Model.allUser(req.body)
         return res.status(200).json({ message: "called allUser", data: result })
     } catch (err) {
-        return res.status(400).json({ message: 'Bad Request' })
+        return res.status(400).json({ message: "Bad Request" })
     }
 }
 
@@ -73,24 +72,24 @@ const findUser = async (req, res) => {
             return res.status(200).json({ message: "not exist user" })
         }
     } catch (err) {
-        return res.status(400).json({ message: 'Bad Request' })
+        return res.status(400).json({ message: "Bad Request" })
     }
 }
 
 //유저인증
 const authorized = async (req, res) => {
     try {
-        const token = req.headers.authorization.replace('Bearer', '').trim()
+        const token = req.headers.authorization.replace("Bearer", "").trim()
         verify(token, process.env.JWT_SECRET, function (err, decoded) {
             const { id, email, username, mobile, gender } = decoded
             if (decoded) {
-                return res.status(200).json({ message: 'verify user', data: { id, email, username, mobile, gender } })
+                return res.status(200).json({ message: "verify user", data: { id, email, username, mobile, gender } })
             } else {
-                return res.status(401).json({ message: 'do not verify' })
+                return res.status(401).json({ message: "do not verify" })
             }
         })
     } catch (err) {
-        return res.status(401).json({ message: 'Bad Request' })
+        return res.status(401).json({ message: "Bad Request" })
     }
 }
 
