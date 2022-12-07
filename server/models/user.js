@@ -1,19 +1,19 @@
-const mysql = require('mysql2/promise')
-require('dotenv').config()
+const mysql = require("mysql2/promise")
+require("dotenv").config()
 const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env
 const db = mysql.createPool({
     host: MYSQL_HOST,
-    port: '3306',
+    port: "3306",
     user: MYSQL_USER,
     password: MYSQL_PASSWORD,
-    database: MYSQL_DATABASE
+    database: MYSQL_DATABASE,
 })
 
 //회원가입 DB
 const signup = async (data) => {
     const { email, username, password, mobile, gender } = data
     try {
-        const result = await db.query('INSERT INTO user(email,username,password,mobile,gender) VALUES (?,?,?,?,?);', [email, username, password, mobile, gender])
+        const result = await db.query("INSERT INTO user(email,username,password,mobile,gender) VALUES (?,?,?,?,?);", [email, username, password, mobile, gender])
         return result[0].insertId
     } catch (err) {
         return err
@@ -24,7 +24,7 @@ const signup = async (data) => {
 const login = async (data) => {
     const { email, password } = data
     try {
-        const result = await db.query('SELECT * FROM user WHERE email = ? AND password = ?;', [email, password])
+        const result = await db.query("SELECT * FROM user WHERE email = ? AND password = ?;", [email, password])
         return result[0]
     } catch (err) {
         return err
