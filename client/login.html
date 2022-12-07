@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <title>Login</title>
+        <script defer type="text/javascript" src="script.js"></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Login</title>
-    <script defer type="text/javascript" src="script.js"></script>
-</head>
-
-<body>
-    <header>
-        <a href="index.html">
-            <img class="logo" src="image/union.png" alt="logo">
-        </a>
-        <nav>
-            <ul>
-                <li class="logon"><a href="login.html">로그인</a></li>
-                <li class="logon"><a href="signup.html">회원가입</a></li>
-                <li class="logout"><a href="mypage.html">내정보</a></li>
-                <li class="logout" onclick="logout()">로그아웃</li>
-            </ul>
-        </nav>
-    </header>
-    <div class="container">
-        <h1 class="wel">환영합니다</h1>
-        <form id="login-form">
-            <div>
-                <label for="email">이메일</label>
-                <input type="email" name="email" placeholder="ex) admin@admin.com" required>
-            </div>
-            <div>
-                <label for="password">비밀번호</label>
-                <input type="password" name="password" required>
-            </div>
-            <div class="submitDiv">
-                <input type="submit" value="로그인" class="submit">
-            </div>
-        </form>
-    </div>
-</body>
-
+    <body>
+        <header>
+            <a href="index.html">
+                <img class="logo" src="image/union.png" alt="logo" />
+            </a>
+            <nav>
+                <ul>
+                    <li class="logon"><a href="login.html">로그인</a></li>
+                    <li class="logon"><a href="signup.html">회원가입</a></li>
+                    <li class="logout"><a href="mypage.html">내정보</a></li>
+                    <li class="logout" onclick="logout()">로그아웃</li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <h1 class="wel">환영합니다</h1>
+            <form id="login-form">
+                <div>
+                    <label for="email">이메일</label>
+                    <input type="email" name="email" placeholder="ex) admin@admin.com" required />
+                </div>
+                <div>
+                    <label for="password">비밀번호</label>
+                    <input type="password" name="password" required />
+                </div>
+                <div class="submitDiv">
+                    <input type="submit" value="로그인" class="submit" />
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
